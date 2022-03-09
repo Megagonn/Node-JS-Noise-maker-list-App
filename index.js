@@ -21,9 +21,7 @@ app.get('/add.ejs', (req, res)=>{
 app.post('/add.ejs', (req, res)=>{
     let {name} = req.body;
     list.push({name, count: 1});
-    document.getElementById('addName').addEventListener('click', ()=>{
-        alert("i got here")
-    })
+    
     res.redirect('add.ejs');
 })
 
