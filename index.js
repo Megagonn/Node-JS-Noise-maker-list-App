@@ -8,12 +8,23 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(`${__dirname}/public`));
 
+var list = [];
+var count;
+
 app.get('/', (req, res)=>{
     res.render('index.ejs');
 })
 
 app.get('/add.ejs', (req, res)=>{
-    res.render('add.ejs')
+    res.render('add.ejs');
+})
+app.post('/add.ejs', (req, res)=>{
+    let {name} = req.body;
+    list.push({name, count: 1});
+    document.getElementById('addName').addEventListener('click', ()=>{
+        alert("i got here")
+    })
+    res.redirect('add.ejs');
 })
 
 app.get('/all.ejs', (req, res)=>{
