@@ -11,18 +11,44 @@
 <body>
     <div>
         <div class="w-75 mx-auto border border-success p-3 my-5 rounde">
-            <table class="my-2">
+            <table class="my-2 w-100 rounded table table-striped border border-success">
                 <thead>
-                    <th>S/N</th>
-                    <th>Name</th>
-                    <th>Count</th>
+                    <th class="p-2 mx-2 w-25 text-center">S/N</th>
+                    <th class="p-2 mx-2 w-25 text-center">Name</th>
+                    <th class="p-2 mx-2 w-25 text-center">Count</th>
                     <th>Actions</th>
                 </thead>
+                <% if (list.length > 0) { %>
+                    <% for( let i = 0; i < list.length; i++ ) { %>
+                        <tr>
+                            <td class="p-2 mx-2 w-25 text-center"><%= i+1 %> </td>
+                            <td class="p-2 mx-2 w-25 text-center"><%= list[i].name %> </td>
+                            <td class="p-2 mx-2 w-25 text-center" id="count">
+                                <div><%= list[i].count %></div>
+                            </td>
+                            <td>
+                                <form action="/plus" method="post">
+                                    <input type="hidden" name="index" value="<%= i %> ">
+                                    <button class="btn btn-success" id="add">+</button>
+                                </form>
+                                <form action="/del" method="post">
+                                    <input type="hidden" name="index" value="<%= i %> ">
+                                    <button class="btn btn-info" id="del">X</button>
+                                </form>
+                                <form action="/-" method="post">
+                                    <input type="hidden" name="index" value="<%= i %> ">
+                                    <button class="btn btn-danger" id="minus">-</button>
+                                </form>
+                            </td>
+                        </tr>
+                        
+                    <% } %>
+                <% } else { %>
+                    <div class="alert alert-info">Empty, add names to the list by clicking the "Add" button</div>
+                <% } %> 
             </table>
             <a href="add.ejs" ><button class="w-100 btn btn-success" id="addName">Add</button></a>
         </div>
     </div>
-
-    <script src="/files/ex.js"></script>
 </body>
 </html>
