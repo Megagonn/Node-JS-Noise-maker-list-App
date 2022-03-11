@@ -26,16 +26,16 @@
                             <td class="p-2 mx-2 w-25 text-center" id="count">
                                 <div><%= list[i].count %></div>
                             </td>
-                            <td>
-                                <form action="/plus" method="post">
+                            <td style="display: flex;">
+                                <form action="/plus" method="post" class="mx-1">
                                     <input type="hidden" name="index" value="<%= i %> ">
                                     <button class="btn btn-success" id="add">+</button>
                                 </form>
-                                <form action="/del" method="post">
+                                <form action="/del" method="post" class="mx-1">
                                     <input type="hidden" name="index" value="<%= i %> ">
                                     <button class="btn btn-info" id="del">X</button>
                                 </form>
-                                <form action="/-" method="post">
+                                <form action="/-" method="post" class="mx-1">
                                     <input type="hidden" name="index" value="<%= i %> ">
                                     <button class="btn btn-danger" id="minus">-</button>
                                 </form>
